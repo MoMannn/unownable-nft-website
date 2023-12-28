@@ -1,0 +1,91 @@
+body {
+  background-color: #000000;
+  color: #868d96;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  color: #fff;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h1 {
+  font-size: 82px;
+}
+
+button {
+  border-radius: 5px;
+  border: #ffce65 solid 1px;
+  background-color: #000000;
+  color: #fff;
+  padding: 3px 20px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: #ffce65;
+  color: #770b10;
+}
+
+button.secondary {
+  background-color: #ffce65;
+  color: #770b10;
+}
+
+button.secondary:hover {
+  background-color: #000000;
+  color: #fff;
+}
+
+button.connect {
+  border-radius: 4px;
+  border: #d1d7de solid 1px;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 3px 10px;
+}
+
+.mt-10 {
+  margin-top: 6rem !important;
+}
+
+.mt-20 {
+  margin-top: 12rem !important;
+}
+
+.mt-30 {
+  margin-top: 18rem !important;
+}
+
+.mainImg {
+  position: absolute;
+  bottom: -60%;
+  right: -12%;
+  z-index: -1;
+}
+
+a {
+  color: #868d96;
+}
+
+a:hover {
+  color: #fff;
+}
+
+#connect p {
+  font-size: 14px;
+  color: #fff;
+}
+
+#nftInfo {
+  min-height: 80px;
+  font-size: 18px;
+}

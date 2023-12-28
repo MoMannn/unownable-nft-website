@@ -8,6 +8,13 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <script
@@ -20,65 +27,116 @@
       type="application/javascript"
     ></script>
     <script src="./abi.js" type="application/javascript"></script>
-    <script>
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const nftAddress = "0x45cFFcC1dE8cb677D54B496168152473A4de8873";
+    <script src="./logic.js" type="application/javascript"></script>
 
-      $(async function () {
-        await ethereum.request({ method: "eth_requestAccounts" });
-        await loadNFT();
-      });
-
-      async function loadNFT() {
-        const contract = new ethers.Contract(nftAddress, nftAbi, provider);
-        const address = await provider.getSigner().getAddress();
-        console.log(address);
-
-        const owner = await contract.ownerOf(1);
-        $("#nfts").html("");
-
-        const url = await contract.tokenURI(1);
-
-        let metadata = null;
-        try {
-          metadata = await $.getJSON(url);
-        } catch (e) {
-          console.log(e);
-          metadata = {
-            name: "",
-            description: "",
-            image: "",
-          };
-        }
-        $("#nfts").append(`
-            <div id="nft" class="col-sm-3">
-              <h3>${metadata.name}</h3>
-              <p>${metadata.description}</p>
-              <img class="img-fluid" src="${metadata.image}" />
-              <p>Currently in possession of: ${owner}</p>
-            </div>
-          `);
-      }
-
-      async function takePossession() {
-        const nft = new ethers.Contract(nftAddress, nftAbi, provider).connect(
-          provider.getSigner()
-        );
-        const tx = await nft.takePossession();
-        console.log(tx);
-      }
-    </script>
-
+    <div class="row justify-content-end text-right m-0">
+      <div id="connect" class="col-sm-12 m-3">
+        <button class="connect float-right" onclick="connect()">
+          Connect your wallet
+        </button>
+      </div>
+    </div>
     <div class="container">
-      <div class="row">
+      <div class="row mt-10 position-relative">
         <div class="col-sm-12">
-          <h1>Unownable NFT</h1>
-          <button onclick="takePossession()">Take possession</button>
+          <h1>Unownable revolution</h1>
+          <p>
+            The world’s first unownable token (U0T) grants only possession, not
+            ownership.
+          </p>
+        </div>
+        <div class="col-sm-12 mt-5">
+          <button class="secondary mr-2" onclick="takePossession()">
+            Take possession
+          </button>
+
+          <button onclick="readWhitepaper()">Read whitepaper</button>
+        </div>
+        <div id="nftInfo" class="col-sm-12 mt-5"></div>
+        <img class="mainImg" src="./media/unownable_coin_black.png" />
+      </div>
+      <div class="row mt-30">
+        <div class="col-sm-12">
+          <a
+            href="https://mumbai.polygonscan.com/token/0x45cFFcC1dE8cb677D54B496168152473A4de8873"
+            target="_blank"
+          >
+            <p>History of possession</p>
+          </a>
+        </div>
+        <div class="col-sm-12">
+          <a
+            href="https://mumbai.polygonscan.com/token/0x45cFFcC1dE8cb677D54B496168152473A4de8873"
+            target="_blank"
+          >
+            <img class="img-fluid" src="./media/possesion_history.png" />
+          </a>
         </div>
       </div>
-      <br />
-      <div class="row"></div>
-      <div class="row" id="nfts"></div>
+      <div class="row mt-10">
+        <div class="col-md-5">
+          <h2>U0T Art</h2>
+          <p>
+            The first unownable token (U0T) comprises a contract, a prompt for
+            humans, and a digital image (photo by <b>Klemen Ilovar</b> of the
+            painting created by <b>The Miha Artnak</b> & <b>Zora Berberich</b>).
+          </p>
+          <p>
+            Only possession of the artwork is possible; it can never be owned by
+            anyone.
+          </p>
+          <a href="">Read more</a>
+        </div>
+        <div class="col-md-7">
+          <img width="100%" src="./media/U0T.png" class="img-fluid" />
+        </div>
+      </div>
+      <div class="row mt-10">
+        <div class="col-md-3 col-sm-4">
+          <img width="100%" src="./media/pfp.png" class="img-fluid" />
+        </div>
+        <div class="col-md-9 col-sm-8">
+          <h2>About the author</h2>
+          <p>
+            <b class="text-white">The Miha Artnak</b> (Michelangelo da Lubiana)
+            is a Ljubljana-based artist, activist, and entrepreneur, active
+            since the 2000s. His satirical paintings, environmental
+            installations, and subversive performances make him one of the most
+            talked-about artists of the last decade.
+          </p>
+          <p>
+            <a href="">Webpage</a> | <a href="">Instagram</a> |
+            <a href="">Facebook</a> | <a href="">Linkedin</a> |
+            <a href="">Twitter</a>
+          </p>
+        </div>
+      </div>
+      <div class="row mt-10">
+        <div class="col-md-6 text-white text-bold">
+          <p>GM fren!</p>
+          <p>
+            If you find any joy and value in what I do, please consider donating
+            crypto with Coinbase Commerce
+          </p>
+          <button class="btn btn-primary">Donate Crypto Plz</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-20 row m-0">
+      <div class="col-sm-6">
+        <a href="https://github.com/MoMannn/unownable-nft">View on GitHub</a>
+      </div>
+      <div class="col-sm-6 text-right">
+        <p>
+          U0T developer
+          <b
+            ><a class="text-white" href="https://github.com/MoMannn"
+              >Tadej Vengust</a
+            ></b
+          >
+        </p>
+      </div>
     </div>
   </body>
 </html>
