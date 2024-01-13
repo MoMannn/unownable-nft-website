@@ -4,6 +4,7 @@ body {
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 22px;
   font-weight: 400;
+  line-height: normal;
 }
 
 h1,
@@ -31,8 +32,7 @@ button {
 }
 
 button:hover {
-  background-color: #ffce65;
-  color: #770b10;
+  border: #fff solid 1px;
 }
 
 button.secondary {
@@ -43,6 +43,7 @@ button.secondary {
 button.secondary:hover {
   background-color: #000000;
   color: #fff;
+  cursor: pointer;
 }
 
 button.connect {
@@ -51,6 +52,9 @@ button.connect {
   font-weight: 400;
   font-size: 14px;
   padding: 3px 10px;
+}
+button.connect:hover {
+  border: #ffce65 solid 1px;
 }
 
 .mt-10 {
@@ -70,6 +74,7 @@ button.connect {
   bottom: -60%;
   right: -12%;
   z-index: -1;
+  max-width: 430px;
 }
 
 a {
@@ -88,4 +93,16 @@ a:hover {
 #nftInfo {
   min-height: 80px;
   font-size: 18px;
+}
+
+.btn-primary {
+  font-size: 1.2rem;
+  border-radius: 1.5rem;
+  background-color: #1653f1;
+  border-color: #1653f1;
+  padding: 0.375rem 2rem;
+}
+
+.text-link {
+  color: #ffce65;
 }
