@@ -78,3 +78,10 @@ async function takePossession() {
   //   `<p>Transaction in progress:</p><a target="_blank" href=${tx}>See on polygonscan</a>`
   // );
 }
+
+function donate() {
+  window.open(
+    "https://commerce.coinbase.com/checkout/3d7903bb-85ef-4839-af92-d2fd4cc16ab3",
+    "_blank"
+  );
+}
