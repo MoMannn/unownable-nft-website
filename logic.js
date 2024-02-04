@@ -60,10 +60,14 @@ async function initProvider() {
 }
 
 async function loadNFT() {
-  const contract = new ethers.Contract(nftAddress, nftAbi, provider);
+  try {
+    const contract = new ethers.Contract(nftAddress, nftAbi, provider);
 
-  const owner = await contract.ownerOf(1);
-  $("#nftInfo").html(`<p>Currently in possession of:</p><p>${owner}</p>`);
+    const owner = await contract.ownerOf(1);
+    $("#nftInfo").html(`<p>Currently in possession of:</p><p>${owner}</p>`);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 async function takePossession() {
@@ -84,4 +88,8 @@ function donate() {
     "https://commerce.coinbase.com/checkout/3d7903bb-85ef-4839-af92-d2fd4cc16ab3",
     "_blank"
   );
+}
+
+function readWhitepaper() {
+  window.open("https://themihaartnak.com/last", "_blank");
 }
