@@ -1,5 +1,5 @@
 let provider = null;
-const nftAddress = "0x45cFFcC1dE8cb677D54B496168152473A4de8873";
+const nftAddress = "0xA6d88d508C3CCC1bf249c8f32aF5962485F83e22";
 const chainId = "0x13881";
 let wallet = null;
 
