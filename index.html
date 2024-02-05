@@ -17,6 +17,15 @@
       href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <meta
+      property="og:image"
+      content="https://unownabletoken.com/media/og-image.jpg"
+    />
+    <meta property="og:title" content="Unownable token" />
+    <meta
+      property="og:description"
+      content="Unownable Token (U0T) is a new concept and allows you to possess something temporarily without owning it. Like a ball in a never-ending game that's always passed around, never staying with one person."
+    />
   </head>
   <body>
     <script
@@ -48,7 +57,11 @@
           </p>
         </div>
         <div class="col-sm-12 mt-5">
-          <button class="secondary mr-2" onclick="takePossession()">
+          <button
+            id="btnTakePossession"
+            class="secondary mr-2"
+            onclick="takePossession()"
+          >
             Take possession
           </button>
 
@@ -95,7 +108,7 @@
           >
         </div>
         <div class="col-md-7">
-          <img width="100%" src="./media/U0T.png" class="img-fluid" />
+          <img width="100%" src="./media/U0T.jpeg" class="img-fluid" />
         </div>
       </div>
       <div class="row mt-10">

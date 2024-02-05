@@ -106,3 +106,17 @@ a:hover {
 .text-link {
   color: #ffce65;
 }
+
+button:disabled {
+  background-color: #868d96;
+  border-color: #868d96;
+  color: white;
+  cursor: no-drop;
+}
+
+button:disabled:hover {
+  background-color: #868d96;
+  border-color: #868d96;
+  color: white;
+  cursor: no-drop;
+}

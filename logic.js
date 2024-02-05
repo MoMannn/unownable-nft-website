@@ -62,9 +62,18 @@ async function initProvider() {
 async function loadNFT() {
   try {
     const contract = new ethers.Contract(nftAddress, nftAbi, provider);
-
     const owner = await contract.ownerOf(1);
-    $("#nftInfo").html(`<p>Currently in possession of:</p><p>${owner}</p>`);
+    if (wallet && owner == wallet) {
+      $("#nftInfo").html(
+        `Unownable token is currently in <b class="text-link">your possession</b>!`
+      );
+      $("#btnTakePossession").prop("disabled", true);
+    } else {
+      $("#nftInfo").html(
+        `<p>Currently in possession of:</p><p class="text-link">${owner}</p>`
+      );
+      $("#btnTakePossession").prop("disabled", false);
+    }
   } catch (e) {
     console.log(e);
   }
