@@ -85,6 +85,10 @@ a:hover {
   color: #fff;
 }
 
+.fs-small {
+  font-size: 14px;
+}
+
 #connect p {
   font-size: 14px;
   color: #fff;

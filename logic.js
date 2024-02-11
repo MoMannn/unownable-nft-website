@@ -1,6 +1,6 @@
 let provider = null;
-const nftAddress = "0xA6d88d508C3CCC1bf249c8f32aF5962485F83e22";
-const chainId = "0x13881";
+const nftAddress = "0x1f22b4f1CEa1f8142b15A6C9a685F3c9e8937B7f";
+const chainId = "0x89"; // polygon mainnet
 let wallet = null;
 
 $(function () {
@@ -31,8 +31,12 @@ async function connect() {
       initProvider();
       currentChain = await getCurrentChain();
     } catch (e) {
-      $("#connectError").html("Metamask not supported");
-      return;
+      try {
+        await addChain();
+      } catch (e) {
+        $("#connectError").html("Metamask not supported");
+        return;
+      }
     }
   }
 
@@ -51,12 +55,31 @@ async function switchChain() {
   });
 }
 
+async function addChain() {
+  await ethereum.request({
+    method: "wallet_addEthereumChain",
+    params: [
+      {
+        chainId,
+        rpcUrls: ["https://polygon-rpc.com/", "https://polygon.llamarpc.com/"],
+        chainName: "Polygon Mainnet",
+        nativeCurrency: {
+          name: "MATIC",
+          symbol: "MATIC",
+          decimals: 18,
+        },
+        blockExplorerUrls: ["https://polygonscan.com/"],
+      },
+    ],
+  });
+}
+
 async function getCurrentChain() {
   return ethereum.request({ method: "eth_chainId" });
 }
 
 async function initProvider() {
-  provider = new ethers.providers.Web3Provider(window.ethereum);
+  provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 }
 
 async function loadNFT() {
