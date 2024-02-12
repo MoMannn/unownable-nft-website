@@ -1,5 +1,5 @@
 let provider = null;
-const nftAddress = "0x1f22b4f1CEa1f8142b15A6C9a685F3c9e8937B7f";
+const nftAddress = "0x911B67ef816E6434781f101e6a52aC52fe9aC192";
 const chainId = "0x89"; // polygon mainnet
 let wallet = null;
 
